@@ -32,10 +32,8 @@ public class HelloController {
             double amount = Double.parseDouble(amountField.getText());
             String category = categoryField.getText();
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateField.getText());
-
             Expense expense = new Expense(description, amount, category, date);
             expenseDAO.addExpense(expense);
-
             resultArea.setText("Expense added successfully!");
         } catch (Exception e) {
             resultArea.setText("Error: " + e.getMessage());
@@ -49,5 +47,10 @@ public class HelloController {
         } catch (SQLException e) {
             resultArea.setText("Error: " + e.getMessage());
         }
+    }
+
+    @FXML
+    public void onHelloButtonClick() {
+        System.out.println("Hello Button Clicked!");
     }
 }
