@@ -70,4 +70,11 @@ public class ExpenseDAO {
         }
         return 0.0;
     }
+
+    public void deleteAllExpenses() throws SQLException {
+        String sql = "DELETE FROM expenses";
+        try (Statement stmt = connection.createStatement()) {
+            stmt.executeUpdate(sql);
+        }
+    }
 }
