@@ -5,27 +5,32 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="org.example.expensetracker.HelloController">
-    <VBox alignment="CENTER" prefHeight="500" prefWidth="400" spacing="15" style="-fx-padding: 15; -fx-background-color: #e6e6fa;">
+    <VBox alignment="CENTER" prefHeight="600" prefWidth="400" spacing="15" style="-fx-padding: 15; -fx-background-color: #e6e6fa;">
         <ImageView fx:id="backgroundImageView" fitHeight="200" fitWidth="350" preserveRatio="true" />
         <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #4b0082;" text="Expense Tracker" />
 
         <GridPane alignment="CENTER" hgap="10" vgap="10">
-            <Label style="-fx-font-size: 12px;" text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="descriptionField" promptText="Enter description" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label style="-fx-font-size: 12px;" text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="idField" promptText="Enter ID" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label style="-fx-font-size: 12px;" text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="amountField" promptText="Enter amount" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label style="-fx-font-size: 12px;" text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="descriptionField" promptText="Enter description" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label style="-fx-font-size: 12px;" text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField fx:id="categoryField" promptText="Enter category" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label style="-fx-font-size: 12px;" text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="amountField" promptText="Enter amount" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-            <Label style="-fx-font-size: 12px;" text="Date (yyyy-MM-dd):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <TextField fx:id="dateField" promptText="Enter date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label style="-fx-font-size: 12px;" text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="categoryField" promptText="Enter category" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label style="-fx-font-size: 12px;" text="Date (yyyy-MM-dd):" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="dateField" promptText="Enter date" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         </GridPane>
 
         <Button maxWidth="200" onAction="#addExpense" style="-fx-background-color: #6a5acd; -fx-text-fill: white;" text="Add Expense" />
         <Button maxWidth="200" onAction="#viewAllExpenses" style="-fx-background-color: #9370db; -fx-text-fill: white;" text="View All Expenses" />
-        <Button maxWidth="200" onAction="#deleteExpenses" style="-fx-background-color: #ff6347; -fx-text-fill: white;" text="Delete Expenses" />
+        <Button maxWidth="200" onAction="#updateExpense" style="-fx-background-color: #4682b4; -fx-text-fill: white;" text="Update Expense" />
+        <Button maxWidth="200" onAction="#deleteExpenseById" style="-fx-background-color: #ff4500; -fx-text-fill: white;" text="Delete Expense by ID" />
+        <Button maxWidth="200" onAction="#deleteExpenses" style="-fx-background-color: #ff6347; -fx-text-fill: white;" text="Delete All Expenses" />
 
         <ScrollPane fitToWidth="true" fitToHeight="true" maxHeight="300">
             <TextArea fx:id="resultArea" editable="false" promptText="Results will appear here..." style="-fx-font-size: 14px; -fx-wrap-text: true;" />

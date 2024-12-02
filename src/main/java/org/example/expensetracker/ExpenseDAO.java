@@ -40,35 +40,24 @@ public class ExpenseDAO {
         return expenses;
     }
 
-    public List<Expense> getExpensesByCategory(String category) throws SQLException {
-        String sql = "SELECT * FROM expenses WHERE category = ?";
-        List<Expense> expenses = new ArrayList<>();
+    public void updateExpense(int id, Expense newExpense) throws SQLException {
+        String sql = "UPDATE expenses SET description = ?, amount = ?, category = ?, date = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, category);
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    expenses.add(new Expense(
-                            rs.getInt("id"),
-                            rs.getString("description"),
-                            rs.getDouble("amount"),
-                            rs.getString("category"),
-                            rs.getDate("date")
-                    ));
-                }
-            }
+            stmt.setString(1, newExpense.getDescription());
+            stmt.setDouble(2, newExpense.getAmount());
+            stmt.setString(3, newExpense.getCategory());
+            stmt.setDate(4, new java.sql.Date(newExpense.getDate().getTime()));
+            stmt.setInt(5, id);
+            stmt.executeUpdate();
         }
-        return expenses;
     }
 
-    public double calculateTotalExpenses() throws SQLException {
-        String sql = "SELECT SUM(amount) AS total FROM expenses";
-        try (Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            if (rs.next()) {
-                return rs.getDouble("total");
-            }
+    public void deleteExpense(int id) throws SQLException {
+        String sql = "DELETE FROM expenses WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
         }
-        return 0.0;
     }
 
     public void deleteAllExpenses() throws SQLException {
