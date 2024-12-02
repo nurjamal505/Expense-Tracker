@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HelloController {
     @FXML
@@ -21,13 +23,14 @@ public class HelloController {
     private ImageView backgroundImageView;
 
     private ExpenseDAO expenseDAO;
+    private static final Logger LOGGER = Logger.getLogger(HelloController.class.getName());
 
     public HelloController() {
         try {
             Connection connection = DatabaseConnection.getConnection();
             this.expenseDAO = new ExpenseDAO(connection);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Database connection error", e);
         }
     }
 
@@ -39,7 +42,7 @@ public class HelloController {
                 backgroundImageView.setImage(image);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Error loading background image", e);
         }
     }
 
@@ -56,6 +59,7 @@ public class HelloController {
             viewAllExpenses();
         } catch (Exception e) {
             resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error adding expense", e);
         }
     }
 
@@ -70,6 +74,7 @@ public class HelloController {
             resultArea.setText(builder.toString());
         } catch (SQLException e) {
             resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error fetching expenses", e);
         }
     }
 
@@ -87,6 +92,7 @@ public class HelloController {
             viewAllExpenses();
         } catch (Exception e) {
             resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error updating expense", e);
         }
     }
 
@@ -99,6 +105,7 @@ public class HelloController {
             viewAllExpenses();
         } catch (Exception e) {
             resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error deleting expense", e);
         }
     }
 
@@ -110,6 +117,7 @@ public class HelloController {
             viewAllExpenses();
         } catch (SQLException e) {
             resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error deleting all expenses", e);
         }
     }
 }

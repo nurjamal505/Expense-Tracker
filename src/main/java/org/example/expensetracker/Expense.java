@@ -4,11 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Expense {
-    private int id;
-    private String description;
-    private double amount;
-    private String category;
-    private Date date;
+    private final int id;
+    private final String description;
+    private final double amount;
+    private final String category;
+    private final Date date;
 
     public Expense(int id, String description, double amount, String category, Date date) {
         this.id = id;
@@ -20,10 +20,6 @@ public class Expense {
 
     public Expense(String description, double amount, String category, Date date) {
         this(0, description, amount, category, date);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getDescription() {

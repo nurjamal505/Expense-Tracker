@@ -5,8 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HelloApplication extends Application {
+
+    private static final Logger LOGGER = Logger.getLogger(HelloApplication.class.getName());
 
     @Override
     public void start(Stage primaryStage) {
@@ -19,7 +23,7 @@ public class HelloApplication extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error loading FXML file", e);
         }
     }
 
