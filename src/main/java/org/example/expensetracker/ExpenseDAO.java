@@ -48,7 +48,10 @@ public class ExpenseDAO {
             stmt.setString(3, newExpense.getCategory());
             stmt.setDate(4, new java.sql.Date(newExpense.getDate().getTime()));
             stmt.setInt(5, id);
-            stmt.executeUpdate();
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated == 0) {
+                throw new SQLException("No record found with ID: " + id);
+            }
         }
     }
 

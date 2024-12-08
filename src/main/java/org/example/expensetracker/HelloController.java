@@ -22,7 +22,7 @@ public class HelloController {
     @FXML
     private ImageView backgroundImageView;
 
-    private ExpenseDAO expenseDAO;
+    private final ExpenseDAO expenseDAO;
     private static final Logger LOGGER = Logger.getLogger(HelloController.class.getName());
 
     public HelloController() {
@@ -30,12 +30,16 @@ public class HelloController {
             Connection connection = DatabaseConnection.getConnection();
             this.expenseDAO = new ExpenseDAO(connection);
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Database connection error", e);
+            throw new RuntimeException("Database connection error", e);
         }
     }
 
     @FXML
     public void initialize() {
+        loadBackgroundImage();
+    }
+
+    private void loadBackgroundImage() {
         try (InputStream imageStream = getClass().getResourceAsStream("/org/example/expensetracker/expense-tracker.jpg")) {
             if (imageStream != null) {
                 Image image = new Image(imageStream);
@@ -46,15 +50,26 @@ public class HelloController {
         }
     }
 
+    private int getIdFromField() throws NumberFormatException {
+        return Integer.parseInt(idField.getText());
+    }
+
+    private Date getDateFromField() throws Exception {
+        return new SimpleDateFormat("yyyy-MM-dd").parse(dateField.getText());
+    }
+
     @FXML
     public void addExpense() {
         try {
+            int id = getIdFromField();
             String description = descriptionField.getText();
             double amount = Double.parseDouble(amountField.getText());
             String category = categoryField.getText();
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateField.getText());
-            Expense expense = new Expense(description, amount, category, date);
+            Date date = getDateFromField();
+
+            Expense expense = new Expense(id, description, amount, category, date);
             expenseDAO.addExpense(expense);
+
             resultArea.setText("Expense added successfully!");
             viewAllExpenses();
         } catch (Exception e) {
@@ -69,7 +84,7 @@ public class HelloController {
             List<Expense> expenses = expenseDAO.getAllExpenses();
             StringBuilder builder = new StringBuilder();
             for (Expense expense : expenses) {
-                builder.append(expense.toString()).append("\n");
+                builder.append(expense).append("\n");
             }
             resultArea.setText(builder.toString());
         } catch (SQLException e) {
@@ -81,13 +96,15 @@ public class HelloController {
     @FXML
     public void updateExpense() {
         try {
-            int id = Integer.parseInt(idField.getText());
+            int id = getIdFromField();
             String description = descriptionField.getText();
             double amount = Double.parseDouble(amountField.getText());
             String category = categoryField.getText();
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateField.getText());
+            Date date = getDateFromField();
+
             Expense updatedExpense = new Expense(id, description, amount, category, date);
             expenseDAO.updateExpense(id, updatedExpense);
+
             resultArea.setText("Expense updated successfully!");
             viewAllExpenses();
         } catch (Exception e) {
@@ -99,7 +116,7 @@ public class HelloController {
     @FXML
     public void deleteExpenseById() {
         try {
-            int id = Integer.parseInt(idField.getText());
+            int id = getIdFromField();
             expenseDAO.deleteExpense(id);
             resultArea.setText("Expense with ID " + id + " deleted successfully!");
             viewAllExpenses();
