@@ -15,10 +15,15 @@ Our expense tracker will organize your expenses with amounts and categories. You
 **Project Requirements List**
 -------------------------
 The following key functionalities are essential for the completion of the project:
+
 DESCRIPTION : a description of the expenditure
+
 AMOUNT : amount of spented money
+
 CATEGORY : you can category of your expenses , such as : food , entertainment, transport and etc.
+
 DATE : exact date of your expenses
+
 1. **ADD EXPENSE** : button for adding of data above to database
 2. **VIEW ALL EXPENSES** : button for demonstrating all data
 3. **UPDATE EXPENSE** : this button is used to overwrite or correct existing data
