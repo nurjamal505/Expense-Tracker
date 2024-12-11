@@ -2,11 +2,15 @@
 ----------------------------------------------------------------------------------------------------------
 
 
+
+
 **Description**
 -----------
 An expense tracker helps people keep track of their expenses. See where and how much money they spent. This allows people to save and be conscious about their purchases and spending money.
 
 Our expense tracker will organize your expenses with amounts and categories. You can see at any time how much you spent over a certain time, and you can also look and analyze in which area you spend the most money
+
+
 
 **Project Requirements List**
 -------------------------
@@ -19,7 +23,7 @@ DATE : exact date of your expenses
 2. **VIEW ALL EXPENSES** : button for demonstrating all data
 3. **UPDATE EXPENSE** : this button is used to overwrite or correct existing data
 4. **DELETE EXPENSE BY ID **: Each data when added will have its own ID and this button makes it possible to delete data by ID
-5.** DELETE ALL EXPENSES** : will delete all datalist
+5. DELETE ALL EXPENSES : will delete all datalist
 6. **VIEW BY MONTH** : will collect and show all expenses for exact month 
 7. **VIEW BY CATEGORIES** : wiil collact and show all expenss for exact categories 
 Here is our documentation
