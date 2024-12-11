@@ -22,8 +22,8 @@ DATE : exact date of your expenses
 1. **ADD EXPENSE** : button for adding of data above to database
 2. **VIEW ALL EXPENSES** : button for demonstrating all data
 3. **UPDATE EXPENSE** : this button is used to overwrite or correct existing data
-4. **DELETE EXPENSE BY ID **: Each data when added will have its own ID and this button makes it possible to delete data by ID
-5. DELETE ALL EXPENSES : will delete all datalist
+4. **DELETE EXPENSE BY ID** : Each data when added will have its own ID and this button makes it possible to delete data by ID
+5. **DELETE ALL EXPENSES** : will delete all datalist
 6. **VIEW BY MONTH** : will collect and show all expenses for exact month 
 7. **VIEW BY CATEGORIES** : wiil collact and show all expenss for exact categories 
 Here is our documentation
