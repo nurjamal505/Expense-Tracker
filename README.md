@@ -33,7 +33,7 @@ DATE : exact date of your expenses
 7. **VIEW BY CATEGORIES** : wiil collact and show all expenss for exact categories 
 Here is our documentation
 
-**Team Members List**
+**Team Members List and their roles**
 ---------------------
 - Jasmin: Designed the program's interface using Scene Builder, ensuring a polished and professional look.
 - Nazima: Implemented the controller, enabling efficient data flow and interaction between the view and the model.
