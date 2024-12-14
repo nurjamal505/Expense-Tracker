@@ -6,17 +6,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.InputStream;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HelloController {
+
     @FXML
-    private TextField descriptionField, amountField, categoryField, dateField, idField;
+    private TextField descriptionField, amountField, dateField;
+    @FXML
+    private ComboBox<String> categoryComboBox;
     @FXML
     private TextArea resultArea;
     @FXML
@@ -27,8 +27,7 @@ public class HelloController {
 
     public HelloController() {
         try {
-            Connection connection = DatabaseConnection.getConnection();
-            this.expenseDAO = new ExpenseDAO(connection);
+            this.expenseDAO = new ExpenseDAO(DatabaseConnection.getConnection());
         } catch (SQLException e) {
             throw new RuntimeException("Database connection error", e);
         }
@@ -37,6 +36,7 @@ public class HelloController {
     @FXML
     public void initialize() {
         loadBackgroundImage();
+        loadCategories();
     }
 
     private void loadBackgroundImage() {
@@ -44,30 +44,33 @@ public class HelloController {
             if (imageStream != null) {
                 Image image = new Image(imageStream);
                 backgroundImageView.setImage(image);
+            } else {
+                LOGGER.warning("Background image not found.");
             }
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "Error loading background image", e);
         }
     }
 
-    private int getIdFromField() throws NumberFormatException {
-        return Integer.parseInt(idField.getText());
-    }
-
-    private Date getDateFromField() throws Exception {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(dateField.getText());
+    private void loadCategories() {
+        categoryComboBox.getItems().addAll("Food", "Transport", "Entertainment", "Utilities", "Health", "Education", "Others");
     }
 
     @FXML
     public void addExpense() {
         try {
-            int id = getIdFromField();
             String description = descriptionField.getText();
             double amount = Double.parseDouble(amountField.getText());
-            String category = categoryField.getText();
-            Date date = getDateFromField();
+            String category = categoryComboBox.getValue();
+            String dateInput = dateField.getText();
 
-            Expense expense = new Expense(id, description, amount, category, date);
+            int categoryId = expenseDAO.getCategoryIdByName(category);
+            if (categoryId == -1) {
+                resultArea.setText("Error: Category not found");
+                return;
+            }
+
+            Expense expense = new Expense(description, amount, categoryId, java.sql.Date.valueOf(dateInput));
             expenseDAO.addExpense(expense);
 
             resultArea.setText("Expense added successfully!");
@@ -82,11 +85,7 @@ public class HelloController {
     public void viewAllExpenses() {
         try {
             List<Expense> expenses = expenseDAO.getAllExpenses();
-            StringBuilder builder = new StringBuilder();
-            for (Expense expense : expenses) {
-                builder.append(expense).append("\n");
-            }
-            resultArea.setText(builder.toString());
+            displayExpenses(expenses);
         } catch (SQLException e) {
             resultArea.setText("Error: " + e.getMessage());
             LOGGER.log(Level.SEVERE, "Error fetching expenses", e);
@@ -96,14 +95,19 @@ public class HelloController {
     @FXML
     public void updateExpense() {
         try {
-            int id = getIdFromField();
             String description = descriptionField.getText();
             double amount = Double.parseDouble(amountField.getText());
-            String category = categoryField.getText();
-            Date date = getDateFromField();
+            String category = categoryComboBox.getValue();
+            String dateInput = dateField.getText();
 
-            Expense updatedExpense = new Expense(id, description, amount, category, date);
-            expenseDAO.updateExpense(id, updatedExpense);
+            int categoryId = expenseDAO.getCategoryIdByName(category);
+            if (categoryId == -1) {
+                resultArea.setText("Error: Category not found");
+                return;
+            }
+
+            Expense updatedExpense = new Expense(description, amount, categoryId, java.sql.Date.valueOf(dateInput));
+            expenseDAO.updateExpense(description, updatedExpense);
 
             resultArea.setText("Expense updated successfully!");
             viewAllExpenses();
@@ -114,15 +118,16 @@ public class HelloController {
     }
 
     @FXML
-    public void deleteExpenseById() {
+    public void deleteExpenseByDescription() {
         try {
-            int id = getIdFromField();
-            expenseDAO.deleteExpense(id);
-            resultArea.setText("Expense with ID " + id + " deleted successfully!");
+            String description = descriptionField.getText();
+            expenseDAO.deleteExpenseByDescription(description);
+
+            resultArea.setText("Expense deleted successfully!");
             viewAllExpenses();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             resultArea.setText("Error: " + e.getMessage());
-            LOGGER.log(Level.SEVERE, "Error deleting expense", e);
+            LOGGER.log(Level.SEVERE, "Error deleting expense by description", e);
         }
     }
 
@@ -130,11 +135,52 @@ public class HelloController {
     public void deleteExpenses() {
         try {
             expenseDAO.deleteAllExpenses();
-            resultArea.setText("All expenses deleted successfully!");
+            resultArea.setText("All expenses have been deleted successfully.");
             viewAllExpenses();
         } catch (SQLException e) {
             resultArea.setText("Error: " + e.getMessage());
             LOGGER.log(Level.SEVERE, "Error deleting all expenses", e);
         }
+    }
+
+    @FXML
+    public void filterByMonth() {
+        try {
+            String month = dateField.getText(); // Input format: "YYYY-MM"
+            if (month == null || month.isEmpty() || !month.matches("\\d{4}-\\d{2}")) {
+                resultArea.setText("Please enter a valid month in the format 'YYYY-MM'.");
+                return;
+            }
+
+            List<Expense> expenses = expenseDAO.getExpensesByMonth(month);
+            if (expenses.isEmpty()) {
+                resultArea.setText("No expenses found for the specified month: " + month);
+            } else {
+                displayExpenses(expenses);
+            }
+        } catch (SQLException e) {
+            resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error filtering expenses by month", e);
+        }
+    }
+
+    @FXML
+    public void filterByCategory() {
+        try {
+            String category = categoryComboBox.getValue();
+            List<Expense> expenses = expenseDAO.getExpensesByCategory(category);
+            displayExpenses(expenses);
+        } catch (SQLException e) {
+            resultArea.setText("Error: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Error filtering expenses by category", e);
+        }
+    }
+
+    private void displayExpenses(List<Expense> expenses) {
+        StringBuilder builder = new StringBuilder();
+        for (Expense expense : expenses) {
+            builder.append(expense).append("\n");
+        }
+        resultArea.setText(builder.toString());
     }
 }

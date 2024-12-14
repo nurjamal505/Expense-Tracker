@@ -1,38 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="org.example.expensetracker.HelloController">
-    <VBox alignment="CENTER" prefHeight="600" prefWidth="400" spacing="15" style="-fx-padding: 15; -fx-background-color: #e6e6fa;">
-        <ImageView fx:id="backgroundImageView" fitHeight="200" fitWidth="350" preserveRatio="true" />
-        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #4b0082;" text="Expense Tracker" />
+<StackPane prefHeight="600.0" prefWidth="350.0" style="-fx-background-color: linear-gradient(to bottom, #f8f8f8, #c5c5d6);" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.expensetracker.HelloController">
+    <VBox alignment="CENTER" prefHeight="550.0" prefWidth="350" spacing="20" style="-fx-padding: 20;">
+        <ImageView fitHeight="150.0" fitWidth="270.0">
+            <Image url="@expense-tracker.jpg" />
+        </ImageView>
 
-        <GridPane alignment="CENTER" hgap="10" vgap="10">
-            <Label style="-fx-font-size: 12px;" text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="idField" promptText="Enter ID" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333366; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 4, 0, 0, 2);" text="Expense Tracker" />
 
-            <Label style="-fx-font-size: 12px;" text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="descriptionField" promptText="Enter description" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <GridPane alignment="CENTER" hgap="15" style="-fx-background-color: #ffffff; -fx-border-color: #aaaaaa; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 2);" vgap="15">
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #444444;" text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="descriptionField" promptText="Enter description" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #bbbbbb;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label style="-fx-font-size: 12px;" text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField fx:id="amountField" promptText="Enter amount" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #444444;" text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="amountField" promptText="Enter amount" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #bbbbbb;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label style="-fx-font-size: 12px;" text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <TextField fx:id="categoryField" promptText="Enter category" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #444444;" text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <ComboBox fx:id="categoryComboBox" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #bbbbbb;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-            <Label style="-fx-font-size: 12px;" text="Date (yyyy-MM-dd):" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <TextField fx:id="dateField" promptText="Enter date" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #444444;" text="Date (yyyy-MM-dd):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="dateField" promptText="Enter date" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #bbbbbb;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
         </GridPane>
 
-        <Button maxWidth="200" onAction="#addExpense" style="-fx-background-color: #6a5acd; -fx-text-fill: white;" text="Add Expense" />
-        <Button maxWidth="200" onAction="#viewAllExpenses" style="-fx-background-color: #9370db; -fx-text-fill: white;" text="View All Expenses" />
-        <Button maxWidth="200" onAction="#updateExpense" style="-fx-background-color: #4682b4; -fx-text-fill: white;" text="Update Expense" />
-        <Button maxWidth="200" onAction="#deleteExpenseById" style="-fx-background-color: #ff4500; -fx-text-fill: white;" text="Delete Expense by ID" />
-        <Button maxWidth="200" onAction="#deleteExpenses" style="-fx-background-color: #ff6347; -fx-text-fill: white;" text="Delete All Expenses" />
+        <VBox alignment="CENTER" spacing="10">
+            <Button maxWidth="200" onAction="#addExpense" style="-fx-background-color: #6a5acd; -fx-text-fill: white;" text="Add Expense" />
+            <Button maxWidth="200" onAction="#viewAllExpenses" style="-fx-background-color: #9370db; -fx-text-fill: white;" text="View All Expenses" />
+            <Button maxWidth="200" onAction="#updateExpense" style="-fx-background-color: #4682b4; -fx-text-fill: white;" text="Update Expense" />
+            <Button maxWidth="200" onAction="#deleteExpenseByDescription" style="-fx-background-color: #ff4500; -fx-text-fill: white;" text="Delete Expense by Description" />
+            <Button maxWidth="200" onAction="#deleteExpenses" style="-fx-background-color: #ff6347; -fx-text-fill: white;" text="Delete All Expenses" />
+            <Button maxWidth="200" onAction="#filterByMonth" style="-fx-background-color: #48d1cc; -fx-text-fill: white;" text="Filter by Month" />
+            <Button maxWidth="200" onAction="#filterByCategory" style="-fx-background-color: #32cd32; -fx-text-fill: white;" text="Filter by Category" />
+        </VBox>
 
-        <ScrollPane fitToWidth="true" fitToHeight="true" maxHeight="300">
+        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="300">
             <TextArea fx:id="resultArea" editable="false" promptText="Results will appear here..." style="-fx-font-size: 14px; -fx-wrap-text: true;" />
         </ScrollPane>
     </VBox>

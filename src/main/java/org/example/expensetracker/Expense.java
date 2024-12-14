@@ -7,19 +7,23 @@ public class Expense {
     private final int id;
     private final String description;
     private final double amount;
-    private final String category;
+    private final int categoryId;
     private final Date date;
 
-    public Expense(int id, String description, double amount, String category, Date date) {
+    public Expense(int id, String description, double amount, int categoryId, Date date) {
         this.id = id;
         this.description = description;
         this.amount = amount;
-        this.category = category;
+        this.categoryId = categoryId;
         this.date = date;
     }
 
-    public Expense(String description, double amount, String category, Date date) {
-        this(0, description, amount, category, date);
+    public Expense(String description, double amount, int categoryId, Date date) {
+        this(0, description, amount, categoryId, date);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getDescription() {
@@ -30,8 +34,8 @@ public class Expense {
         return amount;
     }
 
-    public String getCategory() {
-        return category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
     public Date getDate() {
@@ -45,7 +49,7 @@ public class Expense {
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", amount=" + amount +
-                ", category='" + category + '\'' +
+                ", categoryId=" + categoryId +
                 ", date=" + sdf.format(date) +
                 '}';
     }
