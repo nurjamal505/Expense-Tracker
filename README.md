@@ -1,4 +1,4 @@
-**EXPENSE  TRACKER**
+![image_2024-12-15_20-48-12](https://github.com/user-attachments/assets/cf6ee93f-b2de-41e5-acf8-bdce921bdd5d)**EXPENSE  TRACKER**
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -51,6 +51,9 @@ Key Features:
 6.View by Month: Filter expenses by a specific month.
 7.View by Categories: Summarize and display expenses by category.
 
+
+
+
 **Team Members List and their roles**
 ---------------------
 - Jasmin: Designed the program interface using Scene Builder to ensure an intuitive and visually appealing user experience.
@@ -58,7 +61,11 @@ Key Features:
 - Nurjamal: Designed and implemented the database schema to store and manage expense records securely and efficiently.
 
 
+
+
+
 **UML Class Diagram**
+---------------------
 
 A UML diagram showcasing the relationships between classes such as Expense, ExpenseDAO, Controller, and View.
 
@@ -73,6 +80,7 @@ View: Provides the user interface to interact with the application.
 
 
 **Unit Test Cases**
+--------------------
 Using JUnit for testing:
 
 testAddExpense: Verify that adding an expense works as expected.
@@ -80,18 +88,36 @@ testDeleteExpenseById: Check that a specific expense can be deleted.
 testFilterByMonth: Validate the filtering of expenses by month.
 
 
+
+
+**SQL screenshots**
+--------------------
+![image_2024-12-15_20-48-12](https://github.com/user-attachments/assets/d3e69fa3-0b3b-493f-a7cc-2f67611e70be)
+![image_2024-12-15_20-47-56](https://github.com/user-attachments/assets/abae7db8-e294-4562-8876-7560c2c4d36e)
+
+
+
+
+
+
 **GitHub Repository**
+---------------------
 Access the project source code and documentation at the: https://github.com/nurjamal505/Expense-Tracker.git
 
 
 
+
 **Jar File Build**
+------------------
 Steps for building and running the application:
 
 Install JavaFX.
 Install Oracle JDK.
 Use JarFix if necessary.
 Run the application by configuring the JavaFX runtime path.
+
+
+
 
 
 
