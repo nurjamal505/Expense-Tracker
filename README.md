@@ -2,19 +2,30 @@
 ----------------------------------------------------------------------------------------------------------
 
 
-Table of Contents
+**Table of Contents**
 
 Description
+ 
 Project Requirements List
+
 Team Members List and Roles
+
 Screenshots
+
 Sample Data
+
 UML Class Diagram
+
 Weekly Meeting Documentation
+
 OOP Concepts and Examples
+
 Unit Test Cases
+
 Presentation
+
 GitHub Repository
+
 Jar File Build
 
 
@@ -36,8 +47,11 @@ Our expense tracker will organize your expenses with amounts and categories. You
 The following functionalities form the core of the project:
 
 - Description: Brief information about the expense.
+  
 - Amount: Money spent on the expense.
+  
 - Category: Classify expenses into categories like food, entertainment, transport, etc.
+  
 - Date: Record the exact date of the expense.
 
 
@@ -63,7 +77,9 @@ Key Features:
 **Team Members List and their roles**
 ---------------------
 - Jasmin: Designed the program interface using Scene Builder to ensure an intuitive and visually appealing user experience.
+- 
 - Nazima: Developed the controller, ensuring seamless communication between the interface and the database.
+- 
 - Nurjamal: Designed and implemented the database schema to store and manage expense records securely and efficiently.
 
 
@@ -77,9 +93,13 @@ A UML diagram showcasing the relationships between classes such as Expense, Expe
 
 Diagram Description:
 Expense: Represents individual expense records with attributes like description, amount, category, and date.
+
 ExpenseDAO: Handles CRUD operations for the database.
+
 Controller: Manages user interactions and connects the interface to the database.
+
 View: Provides the user interface to interact with the application.
+
 ![5398071655785423672](https://github.com/user-attachments/assets/993cfa59-a60e-422b-a267-3b1bcb457e66)
 
 
@@ -90,8 +110,11 @@ View: Provides the user interface to interact with the application.
 Using JUnit for testing:
 
 testAddExpense: Verify that adding an expense works as expected.
+
 testDeleteExpenseById: Check that a specific expense can be deleted.
+
 testFilterByMonth: Validate the filtering of expenses by month.
+
 
 
 
@@ -118,8 +141,11 @@ Access the project source code and documentation at the: https://github.com/nurj
 Steps for building and running the application:
 
 Install JavaFX.
+
 Install Oracle JDK.
+
 Use JarFix if necessary.
+
 Run the application by configuring the JavaFX runtime path.
 
 
