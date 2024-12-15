@@ -2,10 +2,29 @@
 ----------------------------------------------------------------------------------------------------------
 
 
+Table of Contents
+
+Description
+Project Requirements List
+Team Members List and Roles
+Screenshots
+Sample Data
+UML Class Diagram
+Weekly Meeting Documentation
+OOP Concepts and Examples
+Unit Test Cases
+Presentation
+GitHub Repository
+Jar File Build
+
+
 
 
 **Description**
 -----------
+The Expense Tracker is a comprehensive tool designed to help individuals monitor and manage their daily expenses effectively. Users can categorize their spending, view reports by month or category, and maintain an organized record of their financial activities. This empowers users to make informed decisions, save money, and identify spending patterns.
+
+Key features include adding expenses, categorizing them, filtering by date or category, and performing bulk operations like updating or deleting expenses. The tool is built with a user-friendly interface and a robust backend to ensure reliability.
 An expense tracker helps people keep track of their expenses. See where and how much money they spent. This allows people to save and be conscious about their purchases and spending money.
 
 Our expense tracker will organize your expenses with amounts and categories. You can see at any time how much you spent over a certain time, and you can also look and analyze in which area you spend the most money
@@ -14,30 +33,67 @@ Our expense tracker will organize your expenses with amounts and categories. You
 
 **Project Requirements List**
 -------------------------
-The following key functionalities are essential for the completion of the project:
+The following functionalities form the core of the project:
 
-DESCRIPTION : a description of the expenditure
+- Description: Brief information about the expense.
+- Amount: Money spent on the expense.
+- Category: Classify expenses into categories like food, entertainment, transport, etc.
+- Date: Record the exact date of the expense.
 
-AMOUNT : amount of spented money
 
-CATEGORY : you can category of your expenses , such as : food , entertainment, transport and etc.
+Key Features:
 
-DATE : exact date of your expenses
-
-1. **ADD EXPENSE** : button for adding of data above to database
-2. **VIEW ALL EXPENSES** : button for demonstrating all data
-3. **UPDATE EXPENSE** : this button is used to overwrite or correct existing data
-4. **DELETE EXPENSE BY ID** : Each data when added will have its own ID and this button makes it possible to delete data by ID
-5. **DELETE ALL EXPENSES** : will delete all datalist
-6. **VIEW BY MONTH** : will collect and show all expenses for exact month 
-7. **VIEW BY CATEGORIES** : wiil collact and show all expenss for exact categories 
-Here is our documentation
+1.Add Expense: Add new expense records to the database.
+2.View All Expenses: Display a complete list of all expenses.
+3.Update Expense: Modify existing expense records by their ID.
+4.Delete Expense by ID: Remove a specific expense by its unique ID.
+5.Delete All Expenses: Clear all expense records.
+6.View by Month: Filter expenses by a specific month.
+7.View by Categories: Summarize and display expenses by category.
 
 **Team Members List and their roles**
 ---------------------
-- Jasmin: Designed the program's interface using Scene Builder, ensuring a polished and professional look.
-- Nazima: Implemented the controller, enabling efficient data flow and interaction between the view and the model.
-- Nurjamal: Created the database, ensuring data security, scalability, and performance.
+- Jasmin: Designed the program interface using Scene Builder to ensure an intuitive and visually appealing user experience.
+- Nazima: Developed the controller, ensuring seamless communication between the interface and the database.
+- Nurjamal: Designed and implemented the database schema to store and manage expense records securely and efficiently.
+
+
+**UML Class Diagram**
+
+A UML diagram showcasing the relationships between classes such as Expense, ExpenseDAO, Controller, and View.
+
+Diagram Description:
+Expense: Represents individual expense records with attributes like description, amount, category, and date.
+ExpenseDAO: Handles CRUD operations for the database.
+Controller: Manages user interactions and connects the interface to the database.
+View: Provides the user interface to interact with the application.
+![5398071655785423672](https://github.com/user-attachments/assets/993cfa59-a60e-422b-a267-3b1bcb457e66)
+
+
+
+
+**Unit Test Cases**
+Using JUnit for testing:
+
+testAddExpense: Verify that adding an expense works as expected.
+testDeleteExpenseById: Check that a specific expense can be deleted.
+testFilterByMonth: Validate the filtering of expenses by month.
+
+
+**GitHub Repository**
+Access the project source code and documentation at the: https://github.com/nurjamal505/Expense-Tracker.git
+
+
+
+**Jar File Build**
+Steps for building and running the application:
+
+Install JavaFX.
+Install Oracle JDK.
+Use JarFix if necessary.
+Run the application by configuring the JavaFX runtime path.
+
+
 
 **Presentation**
 ----------------
