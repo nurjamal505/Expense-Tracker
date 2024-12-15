@@ -44,11 +44,17 @@ The following functionalities form the core of the project:
 Key Features:
 
 1.Add Expense: Add new expense records to the database.
+
 2.View All Expenses: Display a complete list of all expenses.
+
 3.Update Expense: Modify existing expense records by their ID.
+
 4.Delete Expense by ID: Remove a specific expense by its unique ID.
+
 5.Delete All Expenses: Clear all expense records.
+
 6.View by Month: Filter expenses by a specific month.
+ 
 7.View by Categories: Summarize and display expenses by category.
 
 
