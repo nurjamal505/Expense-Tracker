@@ -12,6 +12,7 @@
     </properties>
 
     <dependencies>
+        <!-- JavaFX dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -22,36 +23,54 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17.0.6</version>
         </dependency>
+
+        <!-- JUnit 5 dependencies for testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
+            <version>5.11.1</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version>
+            <version>5.11.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- PostgreSQL driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.4</version> <!-- обновленная версия PostgreSQL драйвера -->
+            <version>42.7.4</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- JavaFX Maven Plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version> <!-- обновленная версия плагина -->
+                <version>0.0.8</version>
                 <configuration>
                     <mainClass>org.example.expensetracker.HelloApplication</mainClass>
                 </configuration>
             </plugin>
+
+            <!-- Maven Surefire Plugin for running tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include> <!-- Подключаем все тесты -->
+                    </includes>
+                    <!-- Add VM argument to open module for JUnit tests -->
+                    <argLine>--add-opens=org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</argLine>
+                    <argLine>--add-opens=org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED</argLine>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>

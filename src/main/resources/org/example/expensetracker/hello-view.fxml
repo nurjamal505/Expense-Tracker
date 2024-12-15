@@ -52,7 +52,6 @@
             <Button maxWidth="200" onAction="#updateExpense" style="-fx-background-color: #4682b4; -fx-text-fill: white;" text="Update Expense" />
             <Button maxWidth="200" onAction="#deleteExpenseByDescription" style="-fx-background-color: #ff4500; -fx-text-fill: white;" text="Delete Expense by Description" />
             <Button maxWidth="200" onAction="#deleteExpenses" style="-fx-background-color: #ff6347; -fx-text-fill: white;" text="Delete All Expenses" />
-            <Button maxWidth="200" onAction="#filterByMonth" style="-fx-background-color: #48d1cc; -fx-text-fill: white;" text="Filter by Month" />
             <Button maxWidth="200" onAction="#filterByCategory" style="-fx-background-color: #32cd32; -fx-text-fill: white;" text="Filter by Category" />
         </VBox>
 
