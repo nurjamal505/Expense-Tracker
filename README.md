@@ -1,4 +1,4 @@
-![image_2024-12-15_20-48-12](https://github.com/user-attachments/assets/cf6ee93f-b2de-41e5-acf8-bdce921bdd5d)**EXPENSE  TRACKER**
+**EXPENSE  TRACKER**
 ----------------------------------------------------------------------------------------------------------
 
 
