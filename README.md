@@ -78,9 +78,9 @@ Key Features:
 **Team Members List and their roles**
 ---------------------
 - Jasmin: Designed the program interface using Scene Builder to ensure an intuitive and visually appealing user experience.
-- 
+ 
 - Nazima: Developed the controller, ensuring seamless communication between the interface and the database.
-- 
+ 
 - Nurjamal: Designed and implemented the database schema to store and manage expense records securely and efficiently.
 
 
@@ -127,6 +127,10 @@ testFilterByMonth: Validate the filtering of expenses by month.
 
 
 
+**Screenshot showcasing the application:**
+![image_2024-12-16_02-55-54](https://github.com/user-attachments/assets/e2748505-c433-4cb3-8512-def21eecb965)
+
+
 
 
 
@@ -151,8 +155,20 @@ Run the application by configuring the JavaFX runtime path.
 
 
 
+**Expense.java:**
+-------------------
+![image_2024-12-16_02-56-17](https://github.com/user-attachments/assets/03c99c9b-7d40-4a53-9b5b-c4c1e8de6f82)
 
 
+
+------------------------------------------
+
+**ExpenseDAO.java:**
+--------------------
+![image_2024-12-16_02-56-45](https://github.com/user-attachments/assets/5c9158f5-7744-4344-b45e-cfec57fc8f97)
+
+
+----------------------------------------------------------
 
 **Presentation**
 ----------------
