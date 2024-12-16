@@ -128,6 +128,7 @@ testFilterByMonth: Validate the filtering of expenses by month.
 
 
 **Screenshot showcasing the application:**
+==========================================
 ![image_2024-12-16_02-55-54](https://github.com/user-attachments/assets/e2748505-c433-4cb3-8512-def21eecb965)
 
 
